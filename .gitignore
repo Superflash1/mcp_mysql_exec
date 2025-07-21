@@ -1,0 +1,61 @@
+# Created by AI Assistant (Sun Wukong) for mcp_mysql_exec project
+
+# --- Virtual Environment ---
+# 忽略Python虚拟环境目录，避免将所有依赖库上传
+# 如果您的虚拟环境目录名不同，请修改下面的 "venv"
+venv/
+.venv/
+env/
+ENV/
+*.env
+
+# --- Bytecode and Cache ---
+# 忽略Python编译产生的字节码和缓存文件
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# --- Environment Configuration ---
+# 这是一个至关重要的规则！
+# 忽略包含数据库密码等敏感信息的 .env 文件
+.env
+
+# --- IDE / Editor specific files ---
+# 忽略常用代码编辑器（VSCode, JetBrains, Sublime Text等）的配置目录
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# --- Build and Distribution Artifacts ---
+# 忽略打包和分发过程中产生的目录和文件
+/build/
+/dist/
+*.egg-info/
+*.egg
+
+# --- Testing Artifacts ---
+# 忽略测试过程中可能产生的缓存、报告和临时文件
+.pytest_cache/
+.tox/
+htmlcov/
+*.cover
+# 忽略由单元测试动态创建的测试用Excel文件
+test_schedule.xlsx
+
+# --- OS-specific files ---
+# 忽略操作系统自动生成的文件
+.DS_Store          # macOS
+Thumbs.db          # Windows
+._*
+
+# --- Log files ---
+# 忽略所有日志文件
+*.log
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log* 

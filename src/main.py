@@ -95,6 +95,7 @@ def get_swap_logs(db: Session = Depends(get_db)) -> schemas.GetSwapLogsResponse:
 if __name__ == "__main__":
     print("="*50)
     print("正在启动FastAPI服务器...")
-    print("交互式API文档将可在 http://127.0.0.1:8000/docs 查看")
+    print("本地服务器部署时，交互式API文档将可在 http://127.0.0.1:8000/docs 查看")
     print("="*50)
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    print("远程服务器部署时，交互式API文档将可在 http://<IP>:8000/docs 查看")
+    uvicorn.run(app, host="0.0.0.0", port=8000)

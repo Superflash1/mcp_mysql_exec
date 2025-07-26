@@ -1,9 +1,11 @@
 fastapi
 uvicorn[standard]
+starlette
 python-multipart
 numpy<2.0
 pandas
 SQLAlchemy
 mysql-connector-python
 python-dotenv
-openpyxl 
+openpyxl
+mcp[cli] 

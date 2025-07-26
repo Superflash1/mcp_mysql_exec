@@ -33,17 +33,25 @@ def ensure_database_exists():
         cnx.close()
     except mysql.connector.Error as err:
         print(f"数据库连接或创建失败: {err}")
-        exit(1) # 如果无法连接或创建数据库，则终止程序
+        print("警告: 数据库不可用，某些功能可能无法正常工作")
+        # 不终止程序，让MCP服务器可以启动用于测试
+        return False
+    return True
 
 # 在模块加载时执行数据库存在性检查
-ensure_database_exists()
+db_available = ensure_database_exists()
 
-# 创建数据库引擎
-# 现在我们可以安全地使用包含数据库名的URL
-engine = create_engine(
-    DATABASE_URL,
-    # echo=True  # 如果需要查看SQLAlchemy生成的SQL语句，可以取消此行注释
-)
+if db_available:
+    # 创建数据库引擎
+    # 现在我们可以安全地使用包含数据库名的URL
+    engine = create_engine(
+        DATABASE_URL,
+        # echo=True  # 如果需要查看SQLAlchemy生成的SQL语句，可以取消此行注释
+    )
+else:
+    # 使用SQLite内存数据库作为后备
+    print("使用SQLite内存数据库作为后备...")
+    engine = create_engine("sqlite:///:memory:", echo=False)
 
 # 创建一个数据库会话工厂
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
